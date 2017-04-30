@@ -14,6 +14,15 @@ else
 	folder_name = args("C:\Users\USER\Desktop")'default folder
 End if
 
+Set replace_name = ""
+If count > 1 then
+	Wscript.Echo args(1)
+	replace_name = args(1)
+else
+	Wscript.Echo args
+	replace_name = args(".id-B84DC38D.[mk.goro@aol.com].wallet")'default folder
+End if
+
 
 Wscript.Echo "Opening " + folder_name
 ShowSubfolders FSO.GetFolder(folder_name), 3 
@@ -25,7 +34,7 @@ Sub ShowSubFolders(Folder, Depth)
 
 	For Each File In Folder.Files
 		sNewFile = File.Name
-		sNewFile = Replace(sNewFile,".id-B84DC38D.[mk.goro@aol.com].wallet"," ")
+		sNewFile = Replace(sNewFile,replace_name,"")
 		if (sNewFile<>File.Name) then 
 			Wscript.Echo "Fixing file name of " + File.Name
 			File.Move(File.ParentFolder+"\"+sNewFile)
