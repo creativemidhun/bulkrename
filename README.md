@@ -9,6 +9,6 @@ This script helped me to rename it back to its orginal file name
 
 run it like 
 
-cscript script.vbs "C:\foldername\" 
+cscript script.vbs "C:\foldername\" ".replace.string"
 
 
